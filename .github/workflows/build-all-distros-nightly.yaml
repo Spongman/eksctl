@@ -52,6 +52,14 @@ jobs:
       - name: build all
         run: |
           make build-all
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: eksctl
+          path: |
+            eksctl
+            
       - name: slack on failure
         if: failure()
         uses: actions-ecosystem/action-slack-notifier@fc778468d09c43a6f4d1b8cccaca59766656996a #v1.1.0
